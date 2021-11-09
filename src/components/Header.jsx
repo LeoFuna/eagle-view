@@ -1,8 +1,7 @@
 import React from 'react';
-import { getAll } from '../services/fetchApi';
+import DropdownMenu from './DropdownMenu';
 
 function Header() {
-  getAll('units')
   return (
     <header>
       <div>
@@ -10,17 +9,19 @@ function Header() {
       </div>
       <div>
         <h1>Empresa</h1>
-        <select name="" id="">
+        <DropdownMenu endpoint='companies' />
+        {/* <select name="" id="">
           <option value="">opcao 1</option>
           <option value="">opcao 2</option>
-        </select>
+        </select> */}
       </div>
       <div>
         <h1>Unidade</h1>
-        <select name="" id="">
+        <DropdownMenu endpoint='units' />
+        {/* <select name="" id="">
           <option value="">Todas</option>
           <option value="">opcao 2</option>
-        </select>
+        </select> */}
       </div>
     </header>
   );
