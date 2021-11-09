@@ -1,8 +1,8 @@
 import React from 'react';
-import { getAllAssets } from '../services/fetchApi';
+import { getAll } from '../services/fetchApi';
 
 function Header() {
-  getAllAssets()
+  getAll('units')
   return (
     <header>
       <div>
