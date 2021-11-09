@@ -16,7 +16,7 @@ function Header() {
       <div>
         <h1>Unidade</h1>
         <select name="" id="">
-          <option value="">opcao 1</option>
+          <option value="">Todas</option>
           <option value="">opcao 2</option>
         </select>
       </div>
