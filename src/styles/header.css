@@ -14,6 +14,12 @@ header div {
   margin: 10px 0;
 }
 
+select {
+  font-size: 18px;
+  width: 50%;
+  height: 80%;
+}
+
 #logo-header {
   font-size: 24px;
 }
@@ -22,10 +28,4 @@ header div {
   font-size: 24px;
   width: 50%;
   text-align: center;
-}
-
-select {
-  font-size: 18px;
-  width: 50%;
-  height: 80%;
 }
