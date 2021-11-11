@@ -46,3 +46,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Dificuldades
 
 Utilização do React com Redux em componentes funcionais
+
+Aprendizado do Redux-toolkit na configuração do Redux
