@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getAll } from '../services/fetchApi';
 
-function DropdownMenu(endpoint) {
+function DropdownMenu({ endpoint }) {
   const [options, setOptions] = useState(['Todas']);
 
-  useEffect(() => {
-    const getData = async () => {
-      const allOptions = await getAll(endpoint);
-      await setOptions([...options, ...allOptions]);
-    };
-    getData();
+  async function getDataFromApi() {
+    const allOptions = await getAll(endpoint);
+    console.log(allOptions)
+    setOptions([...options, ...allOptions]);
+  }
+  
+  useEffect(async () => {
+    await getDataFromApi();
   }, []);
   
   function renderOptions() {
