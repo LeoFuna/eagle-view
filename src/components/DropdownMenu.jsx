@@ -4,17 +4,18 @@ import { getAll } from '../services/fetchApi';
 function DropdownMenu({ endpoint }) {
   const [options, setOptions] = useState(['Todas']);
 
-  async function getDataFromApi() {
+  async function getDataFromApiAndSetNewOptions() {
     const allOptions = await getAll(endpoint);
-    console.log(allOptions)
-    setOptions([...options, ...allOptions]);
+    const nameFromOptions = allOptions.map((option) => option.name);
+    setOptions([...options, ...nameFromOptions]);
   }
   
-  useEffect(async () => {
-    await getDataFromApi();
+  useEffect(() => {
+    getDataFromApiAndSetNewOptions();
   }, []);
   
   function renderOptions() {
+    // console.log(options)
     return options.map((option, index) => (
       <option key={ index } value="">{ option }</option>
     ));
