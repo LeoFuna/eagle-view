@@ -14,7 +14,7 @@ export const slice = createSlice({
   }
 });
 
-export const getAssets = (state) => state.assets; 
+export const getDashboard = (state) => state.dashboard; 
 
 export const { updateAssets } = slice.actions;
 
