@@ -10,18 +10,10 @@ function Header() {
       <div>
         <h1>Empresa</h1>
         <DropdownMenu endpoint='companies' />
-        {/* <select name="" id="">
-          <option value="">opcao 1</option>
-          <option value="">opcao 2</option>
-        </select> */}
       </div>
       <div>
         <h1>Unidade</h1>
         <DropdownMenu endpoint='units' />
-        {/* <select name="" id="">
-          <option value="">Todas</option>
-          <option value="">opcao 2</option>
-        </select> */}
       </div>
     </header>
   );

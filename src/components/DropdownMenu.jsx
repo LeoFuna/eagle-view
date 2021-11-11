@@ -15,14 +15,13 @@ function DropdownMenu({ endpoint }) {
   }, []);
   
   function renderOptions() {
-    // console.log(options)
     return options.map((option, index) => (
-      <option key={ index } value="">{ option }</option>
+      <option key={ index } value={ option }>{ option }</option>
     ));
   }
 
   return (
-    <select>
+    <select onChange={ (event) => console.log(event.target.value) }>
       { renderOptions() }
     </select>
   );
