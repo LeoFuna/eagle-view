@@ -9,23 +9,23 @@ header div {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 33.3333%;
+  height: 30%;
   width: 90%;
-  margin: 10px 0;
 }
 
 select {
-  font-size: 18px;
+  font-size: 16px;
   width: 50%;
-  height: 80%;
+  height: 70%;
 }
 
 #logo-header {
-  font-size: 24px;
+  font-size: 18px;
+  height: 40%;
 }
 
 #company-header h1, #unit-header h1 {
-  font-size: 24px;
+  font-size: 18px;
   width: 50%;
   text-align: center;
 }
