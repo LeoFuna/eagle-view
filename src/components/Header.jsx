@@ -1,24 +1,20 @@
 import React from 'react';
+import DropdownMenu from './DropdownMenu';
+import '../styles/header.css';
 
 function Header() {
   return (
     <header>
-      <div>
+      <div id="logo-header">
         <h1>Eagle View</h1>
       </div>
-      <div>
+      <div id="company-header">
         <h1>Empresa</h1>
-        <select name="" id="">
-          <option value="">opcao 1</option>
-          <option value="">opcao 2</option>
-        </select>
+        <DropdownMenu endpoint='companies' />
       </div>
-      <div>
+      <div id="unit-header">
         <h1>Unidade</h1>
-        <select name="" id="">
-          <option value="">opcao 1</option>
-          <option value="">opcao 2</option>
-        </select>
+        <DropdownMenu endpoint='units' />
       </div>
     </header>
   );
