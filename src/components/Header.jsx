@@ -1,5 +1,6 @@
 import React from 'react';
 import DropdownMenu from './DropdownMenu';
+import '../styles/header.css';
 
 function Header() {
   return (
