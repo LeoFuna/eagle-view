@@ -48,3 +48,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 Utilização do React com Redux em componentes funcionais
 
 Aprendizado do Redux-toolkit na configuração do Redux
+
+Aprender a utilizar o Highcharts, utilizando ferramenta highcharts-react-official para uso no React
