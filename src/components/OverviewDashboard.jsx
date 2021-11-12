@@ -9,32 +9,42 @@ import HighchartsReact from 'highcharts-react-official';
 function OverviewDashbord() {
   const dispacth = useDispatch();
   const { assets } = useSelector(getDashboard);
+  const [statusOptions, setStatusOptions] = useState(updateOptions([0, 0, 0]));
 
-  const options = {
-    chart: {
-        type: 'bar'
-    },
-    title: {
-        text: 'Situação dos Ativos'
-    },
-    xAxis: {
-        categories: ['Em Parada', 'Em Alerta', 'Em Operação']
-    },
-    yAxis: {
-        title: {
-            text: 'Quantidade'
-        }
-    },
-    series: [{
-        name: 'Ativos',
-        data: [3, 2, 5]
-    }]
-  };
+  function updateOptions(newOptions) {
+    return {
+      chart: {
+          type: 'bar'
+      },
+      title: {
+          text: ''
+      },
+      xAxis: {
+          categories: ['Em Parada', 'Em Alerta', 'Em Operação']
+      },
+      yAxis: {
+          title: {
+              text: 'Quantidade'
+          }
+      },
+      series: [{
+          name: 'Ativos',
+          data: newOptions
+      }]
+    };
+  }
 
   async function handleAssetsData() {
     const allAssets = await getAll('assets');
     dispacth(updateAssets(allAssets));
   }
+
+  useEffect(() => {
+    const assetsInDowntime = assets.filter((assetItem) => assetItem.status === 'inDowntime');
+    const assetsInAlert = assets.filter((assetItem) => assetItem.status === 'inAlert');
+    const assetsInOpeation = assets.filter((assetItem) => assetItem.status === 'inOperation');
+    setStatusOptions(updateOptions([assetsInDowntime.length, assetsInAlert.length, assetsInOpeation.length]));
+  }, [assets]);
 
   useEffect(() => {
     handleAssetsData();
@@ -43,8 +53,7 @@ function OverviewDashbord() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div>
-        <p>Sou o primeiro gráfico</p>
-        <HighchartsReact highcharts={ Highcharts } options={ options } />
+        <HighchartsReact highcharts={ Highcharts } options={ statusOptions } />
         { console.log(assets) }
       </div>
       <div>
