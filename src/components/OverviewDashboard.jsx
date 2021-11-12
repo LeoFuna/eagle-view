@@ -8,7 +8,7 @@ import HighchartsReact from 'highcharts-react-official';
 
 function OverviewDashbord() {
   const dispacth = useDispatch();
-  const { assets } = useSelector(getDashboard);
+  const { assets, selectedCompany, selectedUnit } = useSelector(getDashboard);
   const [statusOptions, setStatusOptions] = useState(updateOptions([0, 0, 0]));
 
   function updateOptions(newOptions) {
@@ -36,8 +36,20 @@ function OverviewDashbord() {
 
   async function handleAssetsData(typeService) {
     let assetsToUpdate;
-    if (typeService === 'getAll') {
+    if (typeService === 'Todas') {
       assetsToUpdate = await getAll('assets');
+    }
+    if (typeService === 'Unidade Jaguar') {
+      let allAssets = await getAll('assets');
+      assetsToUpdate = allAssets.filter((assetItem) => assetItem.unitId === 1);
+    }
+    if (typeService === 'Unidade Tobias') {
+      let allAssets = await getAll('assets');
+      assetsToUpdate = allAssets.filter((assetItem) => assetItem.unitId === 2);
+    }
+    if (typeService === 'Empresa Teste') {
+      let allAssets = await getAll('assets');
+      assetsToUpdate = allAssets.filter((assetItem) => assetItem.companyId === 1);
     }
     dispacth(updateAssets(assetsToUpdate));
   }
@@ -50,14 +62,18 @@ function OverviewDashbord() {
   }, [assets]);
 
   useEffect(() => {
-    handleAssetsData('getAll');
+    handleAssetsData(selectedUnit)
+  }, [selectedUnit, selectedCompany]);
+
+  useEffect(() => {
+    handleAssetsData('Todas');
   }, []);
   
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div>
         <HighchartsReact highcharts={ Highcharts } options={ statusOptions } />
-        { console.log(assets) }
+        {/* { console.log(assets) } */}
       </div>
       <div>
         <p>Sou o segundo gráfico</p>

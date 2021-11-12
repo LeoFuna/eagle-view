@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  units: [],
   assets: [],
   selectedCompany: 'Todas',
   selectedUnit: 'Todas',
@@ -10,6 +11,9 @@ export const slice = createSlice({
   name: 'dashboard',
   initialState,
   reducers: {
+    updateUnits(state, { payload }) {
+      return { ...state, units: payload }
+    },
     updateAssets(state, { payload }) {
       return { ...state, assets: payload };
     },
@@ -24,6 +28,6 @@ export const slice = createSlice({
 
 export const getDashboard = (state) => state.dashboard;
 
-export const { updateAssets, updateSelectedCompany, updateSelectedUnit } = slice.actions;
+export const { updateUnits, updateAssets, updateSelectedCompany, updateSelectedUnit } = slice.actions;
 
 export default slice.reducer;
