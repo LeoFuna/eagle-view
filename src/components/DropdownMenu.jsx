@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateSelectedCompany, updateSelectedUnit } from '../redux/dashboardSlice';
 import { getAll } from '../services/fetchApi';
 
 function DropdownMenu({ endpoint }) {
   const [options, setOptions] = useState(['Todas']);
+  const dispatch = useDispatch();
 
   async function getDataFromApiAndSetNewOptions() {
     const allOptions = await getAll(endpoint);
@@ -20,8 +23,17 @@ function DropdownMenu({ endpoint }) {
     ));
   }
 
+  function handleChangesOnSelect({ target }) {
+    if (endpoint === 'companies') {
+      dispatch(updateSelectedCompany(target.value));
+    }
+    if (endpoint === 'units') {
+      dispatch(updateSelectedUnit(target.value));
+    }
+  }
+
   return (
-    <select onChange={ (event) => console.log(event.target.value) }>
+    <select onChange={ (event) => handleChangesOnSelect(event) }>
       { renderOptions() }
     </select>
   );

@@ -34,9 +34,12 @@ function OverviewDashbord() {
     };
   }
 
-  async function handleAssetsData() {
-    const allAssets = await getAll('assets');
-    dispacth(updateAssets(allAssets));
+  async function handleAssetsData(typeService) {
+    let assetsToUpdate;
+    if (typeService === 'getAll') {
+      assetsToUpdate = await getAll('assets');
+    }
+    dispacth(updateAssets(assetsToUpdate));
   }
 
   useEffect(() => {
@@ -47,7 +50,7 @@ function OverviewDashbord() {
   }, [assets]);
 
   useEffect(() => {
-    handleAssetsData();
+    handleAssetsData('getAll');
   }, []);
   
   return (
