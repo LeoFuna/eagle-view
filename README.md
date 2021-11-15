@@ -50,3 +50,11 @@ Utilização do React com Redux em componentes funcionais
 Aprendizado do Redux-toolkit na configuração do Redux
 
 Aprender a utilizar o Highcharts, utilizando ferramenta highcharts-react-official para uso no React
+
+
+## Próximos Passos
+
+Melhorar a forma que os dados são consumidos no Dashboard, acredito que a melhor maneira é tratar eles logo na escolha das opções no Header e assim enviar para a store
+e de lá renderizar somente os pontos que seja importante.
+
+Continuar o desenvolvimento dos próximos gráficos
