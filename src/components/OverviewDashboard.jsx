@@ -95,23 +95,22 @@ function OverviewDashbord() {
     }
   }
 
-  async function handleAssetsData(typeService) {
+  async function handleAssetsData(typeService) { // PRECISA DE ATENÇÃO à RENDERIZAÇÃO de COMPANIES
     let assetsToUpdate;
     if (typeService === 'Todas') {
       assetsToUpdate = await getAll('assets');
-    }
-    if (typeService === 'Unidade Jaguar') {
+    } else {
       let allAssets = await getAll('assets');
-      assetsToUpdate = allAssets.filter((assetItem) => assetItem.unitId === 1);
+      let allUnits = await getAll('units');
+      const filteredUnit = allUnits.filter((unit) => unit.name === typeService);
+      if (filteredUnit.length === 1) {
+        assetsToUpdate = allAssets.filter((assetItem) => assetItem.unitId === filteredUnit[0].id);
+      }
     }
-    if (typeService === 'Unidade Tobias') {
-      let allAssets = await getAll('assets');
-      assetsToUpdate = allAssets.filter((assetItem) => assetItem.unitId === 2);
-    }
-    if (typeService === 'Empresa Teste') {
-      let allAssets = await getAll('assets');
-      assetsToUpdate = allAssets.filter((assetItem) => assetItem.companyId === 1);
-    }
+    // if (typeService === 'Empresa Teste') {
+    //   let allAssets = await getAll('assets');
+    //   assetsToUpdate = allAssets.filter((assetItem) => assetItem.companyId === 1);
+    // }
     dispacth(updateAssets(assetsToUpdate));
   }
 
@@ -125,7 +124,11 @@ function OverviewDashbord() {
 
   useEffect(() => {
     handleAssetsData(selectedUnit)
-  }, [selectedUnit, selectedCompany]);
+  }, [selectedUnit]);
+
+  // useEffect(() => {   PENSAR NISSO
+  //   handleAssetsData(selectedCompany)
+  // }, [selectedCompany]);
 
   useEffect(() => {
     handleAssetsData('Todas');
@@ -135,7 +138,6 @@ function OverviewDashbord() {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div>
         <HighchartsReact highcharts={ Highcharts } options={ statusOptions } />
-        { console.log(assets) }
       </div>
       <div>
         <HighchartsReact highcharts={ Highcharts } options={ paretoOptions } />

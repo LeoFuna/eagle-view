@@ -51,10 +51,14 @@ Aprendizado do Redux-toolkit na configuração do Redux
 
 Aprender a utilizar o Highcharts, utilizando ferramenta highcharts-react-official para uso no React
 
+Tratar alguns dados do "backend" onde acredito que poderia ser melhor atendido com um endpoint que já fizesse alguns desses retornos, exemplo:
+filtrar busca por ativos de determinadas empresas ou unidades.
+
 
 ## Próximos Passos
 
-Melhorar a forma que os dados são consumidos no Dashboard, acredito que a melhor maneira é tratar eles logo na escolha das opções no Header e assim enviar para a store
-e de lá renderizar somente os pontos que seja importante.
+1 - Melhorar a lógica para renderização no dashboard com Empresas sendo mudada no Header
 
-Continuar o desenvolvimento dos próximos gráficos
+2 - Acertar para ser dinâmico o gráfico de dispersão pois o mesmo está fixo.
+
+3 -Fazer estruturação do Busca por Detalhe de Ativos
