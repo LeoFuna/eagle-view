@@ -6,6 +6,7 @@ import { getAll } from '../services/fetchApi';
 import Highcharts from 'highcharts';
 import HighchartsPareto from 'highcharts/modules/pareto';
 import HighchartsReact from 'highcharts-react-official';
+import { scatterOptions } from '../helpers/graphicsData';
 
 HighchartsPareto(Highcharts);
 
@@ -134,11 +135,13 @@ function OverviewDashbord() {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div>
         <HighchartsReact highcharts={ Highcharts } options={ statusOptions } />
+        { console.log(assets) }
       </div>
       <div>
         <HighchartsReact highcharts={ Highcharts } options={ paretoOptions } />
       </div>
       <div>
+        <HighchartsReact highcharts={ Highcharts } options= { scatterOptions } />
         <p>Sou o terceiro gráfico</p>
       </div>
       <div>
