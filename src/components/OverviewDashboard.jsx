@@ -6,7 +6,7 @@ import { getAll } from '../services/fetchApi';
 import Highcharts from 'highcharts';
 import HighchartsPareto from 'highcharts/modules/pareto';
 import HighchartsReact from 'highcharts-react-official';
-import { scatterOptions } from '../helpers/graphicsData';
+import { updateScatterOptions } from '../helpers/graphicsData';
 
 HighchartsPareto(Highcharts);
 
@@ -15,6 +15,7 @@ function OverviewDashbord() {
   const { assets, selectedCompany, selectedUnit } = useSelector(getDashboard);
   const [statusOptions, setStatusOptions] = useState(updateOptions([0, 0, 0]));
   const [paretoOptions, setParetoOption] = useState(updateParetoOptions([0, 0, 0]));
+  const [scatterOptions, setScatterOptions] = useState(updateScatterOptions([]))
 
   function updateOptions(newOptions) {
     return {
@@ -101,7 +102,7 @@ function OverviewDashbord() {
       assetsToUpdate = await getAll('assets');
     } else {
       let allAssets = await getAll('assets');
-      let allUnits = await getAll('units');
+      let allUnits = await getAll('units'); // acho que dá para trocar somente pelo units do Selector
       const filteredUnit = allUnits.filter((unit) => unit.name === typeService);
       if (filteredUnit.length === 1) {
         assetsToUpdate = allAssets.filter((assetItem) => assetItem.unitId === filteredUnit[0].id);
@@ -120,6 +121,8 @@ function OverviewDashbord() {
     const assetsInOpeation = assets.filter((assetItem) => assetItem.status === 'inOperation');
     setStatusOptions(updateOptions([assetsInDowntime.length, assetsInAlert.length, assetsInOpeation.length]));
     setParetoOption(updateParetoOptions([assetsInDowntime.length, assetsInAlert.length, assetsInOpeation.length]));
+    const healthScoreOnAssets = assets.map((assetItem) => [assetItem.id, assetItem.healthscore]);
+    setScatterOptions(updateScatterOptions(healthScoreOnAssets))
   }, [assets]);
 
   useEffect(() => {

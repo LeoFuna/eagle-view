@@ -1,6 +1,6 @@
 import Highcharts from 'highcharts';
 
-export const scatterOptions = {
+export const updateScatterOptions = (data) => ({
   chart: {
       type: 'scatter',
       zoomType: 'xy'
@@ -62,7 +62,7 @@ export const scatterOptions = {
   series: [{
       name: 'Ativo',
       color: 'rgba(223, 83, 83, .5)',
-      data: [[1, 70], [2, 73.7], [3, 90.9], [4, 88.3], [5, 60.4], [6, 91.2], [7, 53.8], [8, 76.12], [9, 66.09], [10, 50.13]]
+      data: data
 
   }]
-}
+})
