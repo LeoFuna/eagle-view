@@ -151,7 +151,6 @@ function OverviewDashbord() {
       </div>
       <div>
         <DropdownMenuOnDashBoard assets={ assets } />
-        <button>Buscar</button>
       </div>
     </div>
   );

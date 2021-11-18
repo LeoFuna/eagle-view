@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function DropdownMenuOnDashBoard({ assets }) {
   const [modelOption, setModelOption] = useState('');
+  const [nameAssetOption, setNameAssetOption] = useState('');
 
   function renderModelOptions() {
     const notDuplicatedModels = []
@@ -22,17 +23,26 @@ function DropdownMenuOnDashBoard({ assets }) {
 
   function renderNameOptions() {
     const filteredByModelSelected = assets.filter((item) => item.model === modelOption);
-    return filteredByModelSelected.map((asset, index) => <option key={ index } value={ asset.name }>{ asset.name }</option>)
+    return filteredByModelSelected.map((asset) => <option key={ asset.id } value={ asset.name }>{ asset.name }</option>)
   }
 
   function handleChangesOnModelOption({ target }) {
     setModelOption(target.value);
+    // adicionado para poder resetar o padrão dos nome dos ativos quando o modelo for alterado
+    const filteredByModelSelected = assets.filter((item) => item.model === target.value);
+    setNameAssetOption(filteredByModelSelected[0].name);
+  }
+
+  function handleChangesOnNameOption({ target }) {
+    setNameAssetOption(target.value);
   }
 
   // solução encontrada para setar como padrão de escolha sempre o primeiro modelo que vem do assets, vindo do Slice
   useEffect(() => {
     if (assets.length > 0) {
       setModelOption(assets[0].model);
+      const filteredByModelSelected = assets.filter((item) => item.model === assets[0].model);
+      setNameAssetOption(filteredByModelSelected[0].name);
     }
   }, [assets]);
 
@@ -41,9 +51,11 @@ function DropdownMenuOnDashBoard({ assets }) {
       <select onChange={ (event) => handleChangesOnModelOption(event) }>
         { renderModelOptions() }
       </select>
-      <select>
+      <select onChange={ (event) => handleChangesOnNameOption(event) }>
         { renderNameOptions() }
       </select>
+      {/* Esse botão deverá fazer um redirecionamento de rota para outra página pegando especificamente os dados daquele produto */}
+      <button>Buscar</button>
     </>
   )
 }
