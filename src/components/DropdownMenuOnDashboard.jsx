@@ -1,10 +1,18 @@
 import React from "react";
 
-function DropdownMenuOnDashBoard({ modelOrName }) {
+function DropdownMenuOnDashBoard({ modelOrName, dataToRender }) {
 
   function renderOptions() {
     if (modelOrName === 'model') {
-      return 'opções de modelo'
+      const notDuplicatedModels = []
+      const duplicatedModels = dataToRender.map((option) => option.model);
+      duplicatedModels.forEach(model => {
+        const alreadyRegistered = notDuplicatedModels.find((modelDuplicated) => modelDuplicated === model)
+        if (!alreadyRegistered) {
+          notDuplicatedModels.push(model);
+        }
+      });
+      return notDuplicatedModels.map((option, index) => <option key={ index } value={ option }>{ option }</option>)
     } else {
       return 'opções de nomes filtrado pelo modelo'
     }
@@ -12,8 +20,7 @@ function DropdownMenuOnDashBoard({ modelOrName }) {
 
   return (
     <select>
-      <option>Motor</option>
-      <option>Fan</option>
+      { renderOptions() }
     </select>
   )
 }

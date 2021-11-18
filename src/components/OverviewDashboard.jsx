@@ -7,6 +7,7 @@ import Highcharts from 'highcharts';
 import HighchartsPareto from 'highcharts/modules/pareto';
 import HighchartsReact from 'highcharts-react-official';
 import { updateScatterOptions } from '../helpers/graphicsData';
+import DropdownMenuOnDashBoard from './DropdownMenuOnDashboard';
 
 HighchartsPareto(Highcharts);
 
@@ -149,14 +150,8 @@ function OverviewDashbord() {
         <HighchartsReact highcharts={ Highcharts } options= { scatterOptions } />
       </div>
       <div>
-        <select>
-          <option>Motor</option>
-          <option>Fan</option>
-        </select>
-        <select>
-          <option value="">Ventilador D21</option>
-          <option value="">Motor H12D-3</option>
-        </select>
+        <DropdownMenuOnDashBoard modelOrName='model' dataToRender={ assets } />
+        <DropdownMenuOnDashBoard modelOrName='name' />
         <button>Buscar</button>
       </div>
     </div>
