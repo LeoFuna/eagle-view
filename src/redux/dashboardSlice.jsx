@@ -5,6 +5,7 @@ const initialState = {
   assets: [],
   selectedCompany: 'Todas',
   selectedUnit: 'Todas',
+  selectedModel: '',
 };
 
 export const slice = createSlice({
@@ -23,11 +24,14 @@ export const slice = createSlice({
     updateSelectedUnit(state, { payload }) {
       return { ...state, selectedUnit: payload }
     },
+    updateSelectedModel(state, { payload }) {
+      return { ...state, selectedModel: payload }
+    }
   }
 });
 
 export const getDashboard = (state) => state.dashboard;
 
-export const { updateUnits, updateAssets, updateSelectedCompany, updateSelectedUnit } = slice.actions;
+export const { updateUnits, updateAssets, updateSelectedCompany, updateSelectedUnit, updateSelectedModel } = slice.actions;
 
 export default slice.reducer;
