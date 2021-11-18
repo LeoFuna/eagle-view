@@ -12,8 +12,8 @@ import DropdownMenuOnDashBoard from './DropdownMenuOnDashboard';
 HighchartsPareto(Highcharts);
 
 function OverviewDashbord() {
-  const dispacth = useDispatch();
-  const { assets, selectedCompany, selectedUnit } = useSelector(getDashboard);
+  const dispatch = useDispatch();
+  const { assets, selectedCompany, selectedModel, selectedUnit } = useSelector(getDashboard);
   const [statusOptions, setStatusOptions] = useState(updateOptions([0, 0, 0]));
   const [paretoOptions, setParetoOption] = useState(updateParetoOptions([0, 0, 0]));
   const [scatterOptions, setScatterOptions] = useState(updateScatterOptions([]))
@@ -113,7 +113,7 @@ function OverviewDashbord() {
     //   let allAssets = await getAll('assets');
     //   assetsToUpdate = allAssets.filter((assetItem) => assetItem.companyId === 1);
     // }
-    dispacth(updateAssets(assetsToUpdate));
+    dispatch(updateAssets(assetsToUpdate));
   }
 
   useEffect(() => {
@@ -150,8 +150,8 @@ function OverviewDashbord() {
         <HighchartsReact highcharts={ Highcharts } options= { scatterOptions } />
       </div>
       <div>
-        <DropdownMenuOnDashBoard modelOrName='model' dataToRender={ assets } />
-        <DropdownMenuOnDashBoard modelOrName='name' />
+        <DropdownMenuOnDashBoard modelOrName='model' assets={ assets } />
+        {/* <DropdownMenuOnDashBoard modelOrName='name' dataToRender={ assets } selectedModel={ selectedModel } /> */}
         <button>Buscar</button>
       </div>
     </div>
