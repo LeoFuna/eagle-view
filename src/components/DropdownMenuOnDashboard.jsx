@@ -5,6 +5,7 @@ function DropdownMenuOnDashBoard({ assets }) {
 
   function renderModelOptions() {
     const notDuplicatedModels = []
+    // Lógica para tirar os modelos duplicados vindos do array de assets
     const duplicatedModels = assets.map((option) => option.model);
     if (duplicatedModels.length > 0) {
       duplicatedModels.forEach(model => {
@@ -24,6 +25,11 @@ function DropdownMenuOnDashBoard({ assets }) {
     return filteredByModelSelected.map((asset, index) => <option key={ index } value={ asset.name }>{ asset.name }</option>)
   }
 
+  function handleChangesOnModelOption({ target }) {
+    setModelOption(target.value);
+  }
+
+  // solução encontrada para setar como padrão de escolha sempre o primeiro modelo que vem do assets, vindo do Slice
   useEffect(() => {
     if (assets.length > 0) {
       setModelOption(assets[0].model);
@@ -32,7 +38,7 @@ function DropdownMenuOnDashBoard({ assets }) {
 
   return (
     <>
-      <select>
+      <select onChange={ (event) => handleChangesOnModelOption(event) }>
         { renderModelOptions() }
       </select>
       <select>
