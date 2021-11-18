@@ -3,7 +3,7 @@ import React from 'react';
 function Assets() {
   return (
     <div>
-      Sou a página de Assets
+      <p>Sou o Assets</p>
     </div>
   );
 }
