@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateAssets, updateSelectedCompany, updateSelectedUnit, updateUnits } from '../redux/dashboardSlice';
+import { updateSelectedCompany, updateSelectedUnit, updateUnits } from '../redux/dashboardSlice';
 import { getAll } from '../services/fetchApi';
 
 function DropdownMenu({ endpoint, optionsToRender }) {

@@ -59,6 +59,4 @@ filtrar busca por ativos de determinadas empresas ou unidades.
 
 1 - Melhorar a lógica para renderização no dashboard com Empresas sendo mudada no Header
 
-2 - Acertar para ser dinâmico o gráfico de dispersão pois o mesmo está fixo.
-
 3 -Fazer estruturação do Busca por Detalhe de Ativos

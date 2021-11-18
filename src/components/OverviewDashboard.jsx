@@ -147,10 +147,17 @@ function OverviewDashbord() {
       </div>
       <div>
         <HighchartsReact highcharts={ Highcharts } options= { scatterOptions } />
-        <p>Sou o terceiro gráfico</p>
       </div>
       <div>
-        <p>Sou o detalhes do equipamento</p>
+        <select>
+          <option>Motor</option>
+          <option>Fan</option>
+        </select>
+        <select>
+          <option value="">Ventilador D21</option>
+          <option value="">Motor H12D-3</option>
+        </select>
+        <button>Buscar</button>
       </div>
     </div>
   );
