@@ -150,8 +150,7 @@ function OverviewDashbord() {
         <HighchartsReact highcharts={ Highcharts } options= { scatterOptions } />
       </div>
       <div>
-        <DropdownMenuOnDashBoard modelOrName='model' assets={ assets } />
-        {/* <DropdownMenuOnDashBoard modelOrName='name' dataToRender={ assets } selectedModel={ selectedModel } /> */}
+        <DropdownMenuOnDashBoard assets={ assets } />
         <button>Buscar</button>
       </div>
     </div>

@@ -1,33 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { getDashboard, updateSelectedModel } from "../redux/dashboardSlice";
 
-function DropdownMenuOnDashBoard({ modelOrName, assets, selectedModel }) {
-  // const dispatch = useDispatch();
-  // const { selectedModel } = useSelector(getDashboard);
-  // const [modelOptions, setModelOptions] = useState('');
-
-  // function renderOptions() {
-  //   if (modelOrName === 'model') {
-  //     const notDuplicatedModels = []
-  //     const duplicatedModels = dataToRender.map((option) => option.model);
-  //     if (duplicatedModels.length > 0) {
-  //       duplicatedModels.forEach(model => {
-  //         const alreadyRegistered = notDuplicatedModels.find((modelDuplicated) => modelDuplicated === model)
-  //         if (!alreadyRegistered) {
-  //           notDuplicatedModels.push(model);
-  //         }
-  //       });
-  //       // setModelOptions(notDuplicatedModels[0]);
-  //       dispatch(updateSelectedModel(selectedModel))
-  //       return notDuplicatedModels.map((option, index) => <option key={ index } value={ option }>{ option }</option>)
-  //     }
-  //   } else {
-  //     const filteredByModelSelected = dataToRender.filter((item) => item.model === modelOptions);
-  //     return filteredByModelSelected.map((option, index) => <option key={ index } value={ option.name }>{ option.name }</option>)
-  //   }
-  // }
+function DropdownMenuOnDashBoard({ assets }) {
+  const [modelOption, setModelOption] = useState('');
 
   function renderModelOptions() {
     const notDuplicatedModels = []
@@ -39,22 +13,30 @@ function DropdownMenuOnDashBoard({ modelOrName, assets, selectedModel }) {
           notDuplicatedModels.push(model);
         }
       });
-      // setModelOptions(notDuplicatedModels[0]);
-      // dispatch(updateSelectedModel(selectedModel))
     }
     return (
       notDuplicatedModels.map((model, index) => <option key={ index } value={ model }>{ model }</option>)
     );
   }
 
-  // useEffect(() => {
-  //   dispatch(updateSelectedModel(modelOptions));
-  // }, []);
+  function renderNameOptions() {
+    const filteredByModelSelected = assets.filter((item) => item.model === modelOption);
+    return filteredByModelSelected.map((asset, index) => <option key={ index } value={ asset.name }>{ asset.name }</option>)
+  }
+
+  useEffect(() => {
+    if (assets.length > 0) {
+      setModelOption(assets[0].model);
+    }
+  }, [assets]);
 
   return (
     <>
       <select>
         { renderModelOptions() }
+      </select>
+      <select>
+        { renderNameOptions() }
       </select>
     </>
   )
