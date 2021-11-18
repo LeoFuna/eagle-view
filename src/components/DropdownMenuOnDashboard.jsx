@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function DropdownMenuOnDashBoard({ assets }) {
   const [modelOption, setModelOption] = useState('');
-  const [nameAssetOption, setNameAssetOption] = useState('');
+  const [assetSelected, setAssetSelected] = useState('');
 
   function renderModelOptions() {
     const notDuplicatedModels = []
@@ -30,11 +31,12 @@ function DropdownMenuOnDashBoard({ assets }) {
     setModelOption(target.value);
     // adicionado para poder resetar o padrão dos nome dos ativos quando o modelo for alterado
     const filteredByModelSelected = assets.filter((item) => item.model === target.value);
-    setNameAssetOption(filteredByModelSelected[0].name);
+    setAssetSelected(filteredByModelSelected[0].id);
   }
 
   function handleChangesOnNameOption({ target }) {
-    setNameAssetOption(target.value);
+    const [filteredAsset] = assets.filter((item) => item.name === target.value);
+    setAssetSelected(filteredAsset.id);
   }
 
   // solução encontrada para setar como padrão de escolha sempre o primeiro modelo que vem do assets, vindo do Slice
@@ -42,7 +44,7 @@ function DropdownMenuOnDashBoard({ assets }) {
     if (assets.length > 0) {
       setModelOption(assets[0].model);
       const filteredByModelSelected = assets.filter((item) => item.model === assets[0].model);
-      setNameAssetOption(filteredByModelSelected[0].name);
+      setAssetSelected(filteredByModelSelected[0].id);
     }
   }, [assets]);
 
@@ -55,7 +57,10 @@ function DropdownMenuOnDashBoard({ assets }) {
         { renderNameOptions() }
       </select>
       {/* Esse botão deverá fazer um redirecionamento de rota para outra página pegando especificamente os dados daquele produto */}
-      <button>Buscar</button>
+
+      <button>
+        <Link to={ { pathname:'/assets', search: `${ assetSelected }` } }>Buscar</Link> 
+      </button>
     </>
   )
 }
