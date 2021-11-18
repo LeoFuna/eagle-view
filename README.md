@@ -48,3 +48,15 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 Utilização do React com Redux em componentes funcionais
 
 Aprendizado do Redux-toolkit na configuração do Redux
+
+Aprender a utilizar o Highcharts, utilizando ferramenta highcharts-react-official para uso no React
+
+Tratar alguns dados do "backend" onde acredito que poderia ser melhor atendido com um endpoint que já fizesse alguns desses retornos, exemplo:
+filtrar busca por ativos de determinadas empresas ou unidades.
+
+
+## Próximos Passos
+
+1 - Melhorar a lógica para renderização no dashboard com Empresas sendo mudada no Header
+
+3 - Iniciar a adição de rota ao botão de ativo detalhado pensando que você precisará do Id do ativo para isso e a melhor maneira de fazer isso
