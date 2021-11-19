@@ -21,7 +21,7 @@ function Assets() {
   return (
     <div>
       <HeaderAssetDetails assetName={ assetData.name } />
-      <AllAssetDetails />
+      <AllAssetDetails assetData={ assetData } />
     </div>
   );
 }
