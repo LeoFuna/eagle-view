@@ -3,7 +3,15 @@ import React from "react";
 function HeaderAssetDetails() {
   return(
     <header>
-      Sou o Header
+      <div>
+        <h1>Eagle View</h1>
+      </div>
+      <div>
+        <h1>Ativo</h1>
+      </div>
+      <div>
+        <h1>Unidade</h1>
+      </div>
     </header>
   )
 }
