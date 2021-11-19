@@ -19,8 +19,7 @@ function Assets() {
 
   return (
     <div>
-      <HeaderAssetDetails />
-      <p>{ assetData.name }</p>
+      <HeaderAssetDetails assetName={ assetData.name } />
     </div>
   );
 }
