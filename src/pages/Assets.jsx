@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import AllAssetDetails from '../components/AllAssetDetails';
 import HeaderAssetDetails from '../components/HeaderAssetDetails';
 import { getAll } from '../services/fetchApi';
 
@@ -20,6 +21,7 @@ function Assets() {
   return (
     <div>
       <HeaderAssetDetails assetName={ assetData.name } />
+      <AllAssetDetails assetData={ assetData } />
     </div>
   );
 }
