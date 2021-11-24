@@ -139,8 +139,8 @@ function OverviewDashbord() {
   }, []);
   
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div>
+    <div data-testid='main-overview-div' style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='overview-chart'>
         <HighchartsReact highcharts={ Highcharts } options={ statusOptions } />
       </div>
       <div>

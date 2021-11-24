@@ -1,13 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import OverviewDashboard from '../components/OverviewDashboard';
+import App from '../App';
 
 describe('Ao renderizar ao aplicação', () => {
-  test('todos os elementos do Header devem estar à mostra', () => {
-    const { getByText, getAllByDisplayValue } = render(<OverviewDashboard />);
-    expect(getByText('Eagle View')).toBeInTheDocument();
-    expect(getByText('Empresa')).toBeInTheDocument();
-    expect(getByText('Unidade')).toBeInTheDocument();
-    expect(getAllByDisplayValue('Todas').length).toBe(2);
+  test('todos os elementos do Overview Dashbord devem estar à mostra', () => {
+    const { getByTestId } = render(<App />);
+    expect(getByTestId('main-overview-div')).toBeInTheDocument();
   });
 })
