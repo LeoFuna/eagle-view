@@ -59,4 +59,6 @@ filtrar busca por ativos de determinadas empresas ou unidades.
 
  - Melhorar a lógica para renderização no dashboard com Empresas sendo mudada no Header
 
- - Desenvolver os testes para a página principal
+ - Pensar em aprimorar testes mockando requisições para melhor desempenho
+
+ - Iniciar estilização da aplicação
