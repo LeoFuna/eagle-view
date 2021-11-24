@@ -57,6 +57,6 @@ filtrar busca por ativos de determinadas empresas ou unidades.
 
 ## Próximos Passos
 
-1 - Melhorar a lógica para renderização no dashboard com Empresas sendo mudada no Header
+ - Melhorar a lógica para renderização no dashboard com Empresas sendo mudada no Header
 
-3 - Iniciar a adição de rota ao botão de ativo detalhado pensando que você precisará do Id do ativo para isso e a melhor maneira de fazer isso
+ - Desenvolver os testes para a página principal
