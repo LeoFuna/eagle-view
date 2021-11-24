@@ -27,7 +27,7 @@ function Header() {
         <h1>Empresa</h1>
         <DropdownMenu endpoint='companies' optionsToRender={ companiesOptions } />
       </div>
-      <div id="unit-header">
+      <div id="unit-header" data-testid="unit-header">
         <h1>Unidade</h1>
         <DropdownMenu endpoint='units' optionsToRender={ units } />
       </div>
